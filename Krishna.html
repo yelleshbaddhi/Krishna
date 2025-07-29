@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Krishna's Birthday Celebration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #564fd8;
+            --primary-light: #8982ff;
+            --secondary: #ff6584;
+            --accent: #61d9ff;
+            --dark: #1e1e2e;
+            --light: #f8f9ff;
+            --gray: #e2e8f0;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --section-padding: 120px 5%;
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-weight: 400;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Playfair Display", serif;
+            line-height: 1.3;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            opacity: 0;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn:hover, .btn:focus-visible {
+            transform: translateY(-3px);
+            outline: none;
+        }
+
+        .btn:hover::before, .btn:focus-visible::before {
+            opacity: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline::before {
+            background: var(--primary);
+        }
+
+        .btn-outline:hover, .btn-outline:focus-visible {
+            color: white;
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background-color: rgba(248, 249, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: none;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            background-color: rgba(248, 249, 255, 0.98);
+            box-shadow: none;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .logo:hover, .logo:focus-visible {
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a:focus-visible {
+            color: var(--primary);
+            outline: none;
+        }
+
+        .nav-links a:hover::after, .nav-links a:focus-visible::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 120px;
+            background: linear-gradient(135deg, rgba(248, 249, 255, 0.95), rgba(248, 249, 255, 0.8));
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .header-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+            filter: drop-shadow(0 0 5px rgba(108, 99, 255, 0.7));
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .header-text p.subtitle {
+            font-size: 1.2rem;
+            color: #444444;
+            margin-bottom: 30px;
+            font-weight: 500;
+            opacity: 0.95;
+            max-width: 90%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .audio-container {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .play-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .header-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+        }
+
+        .header-image:hover::before, .header-image:focus-within::before {
+            opacity: 1;
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .header-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            transform: translateZ(20px);
+            filter: brightness(1.1) contrast(1.15) saturate(1.2);
+            background: transparent;
+        }
+
+        .header-image:hover img, .header-image:focus-within img {
+            transform: translateZ(20px) scale(1.03);
+            filter: brightness(1.2) contrast(1.2) saturate(1.3);
+        }
+
+        .special-badge {
+            position: absolute;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .special-badge:hover, .special-badge:focus-visible {
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .special-badge i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .badge-1 {
+            top: -15px;
+            left: -15px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .badge-2 {
+            bottom: -15px;
+            right: -15px;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        section {
+            position: relative;
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            filter: drop-shadow(0 0 3px rgba(108, 99, 255, 0.5));
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .about {
+            background-color: white;
+            margin: 50px auto;
+            padding: 60px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .about:hover, .about:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #444444;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-text ul.family-details {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #555555;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .about-features {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: var(--light);
+            padding: 25px;
+            border-radius: 12px;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .feature-item:hover, .feature-item:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .feature-item:hover .feature-icon, .feature-item:focus-within .feature-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: #555555;
+            margin-bottom: 0;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: auto;
+            cursor: zoom-in;
+            transition: var(--transition);
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+            z-index: 1;
+            border-radius: var(--border-radius);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: center top;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img, .about-image:focus-within img {
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            justify-items: center;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            aspect-ratio: 3 / 4;
+            cursor: pointer;
+            max-width: 350px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+        }
+
+        .gallery-item:hover img, .gallery-item:focus-within img {
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .gifts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .gift-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .gift-card:hover, .gift-card:focus-within {
+            transform: translateY(-10px);
+            outline: none;
+        }
+
+        .gift-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .gift-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+            z-index: 1;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .gift-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .gift-card:hover .gift-image img, .gift-card:focus-within .gift-image img {
+            transform: scale(1.1);
+            outline: none;
+        }
+
+        .gift-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        .gift-info {
+            padding: 25px;
+        }
+
+        .gift-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .gift-info p {
+            color: #555555;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .gift-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gift-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .memories {
+            background-color: white;
+            margin: 50px auto;
+            padding: 60px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .memories:hover, .memories:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .memory {
+            padding: 15px 30px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .memory.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .memory::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .memory-content {
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            position: relative;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .memory-content:hover, .memory-content:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .memory-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .memory-content p {
+            line-height: 1.6;
+            color: #444444;
+            font-size: 0.95rem;
+        }
+
+        .memory-date {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .memory-date i {
+            font-size: 1rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-light);
+        }
+
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover, .footer-links a:focus-visible {
+            color: white;
+            transform: translateX(5px);
+            outline: none;
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .social-links a:hover, .social-links a:focus-visible {
+            background: var(--primary);
+            transform: translateY(-3px);
+            outline: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .floating-btn:hover, .floating-btn:focus-visible {
+            transform: scale(1.1) rotate(15deg);
+            outline: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            outline: none;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            object-fit: contain;
+            object-position: center top;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover, .close-modal:focus-visible {
+            color: var(--secondary);
+            transform: rotate(90deg);
+            outline: none;
+        }
+
+        #wishes {
+            background-color: white;
+            margin: 50px auto;
+            padding: 80px 60px;
+            max-width: 900px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        #wishes:hover, #wishes:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        #wishes h2.section-title {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            filter: drop-shadow(0 0 5px rgba(108, 99, 255, 0.7));
+        }
+
+        .wishes-content {
+            font-family: "Playfair Display", serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444444;
+            text-align: left;
+        }
+
+        .wishes-content p {
+            margin-bottom: 20px;
+        }
+
+        .wishes-content p:first-child {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .wishes-content p:last-child {
+            font-weight: 600;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .music-player:hover, .music-player:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            pointer-events: none;
+            filter: drop-shadow(0 0 5px rgba(108, 99, 255, 0.7));
+            opacity: 0.7;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        .magic-section {
+            background-color: white;
+            margin: 50px auto;
+            padding: 60px;
+            max-width: 900px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magic-section:hover, .magic-section:focus-within {
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .magic-content {
+            text-align: center;
+        }
+
+        .emoji-container {
+            font-size: 3rem;
+            margin: 30px 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .emoji-container:hover, .emoji-container:focus {
+            transform: scale(1.2);
+            outline: none;
+        }
+
+        .quote-container {
+            display: none;
+            font-family: "Playfair Display", serif;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--primary-dark);
+            margin-top: 40px;
+            position: relative;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 101, 132, 0.1));
+            border-radius: 12px;
+        }
+
+        .quote-container.show {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+
+        .quote-decoration {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        .cake-left {
+            top: -20px;
+            left: -20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cake-right {
+            bottom: -20px;
+            right: -20px;
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+
+        .balloon-left {
+            top: -30px;
+            right: -20px;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        .balloon-right {
+            bottom: -30px;
+            left: -20px;
+            animation: float 4s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-icon {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .chatbot-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-popup {
+            position: fixed;
+            bottom: 180px;
+            right: 25px;
+            width: 360px;
+            height: 480px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1100;
+            transition: var(--transition);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .chatbot-popup.show {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .chatbot-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chatbot-close:hover, .chatbot-close:focus-visible {
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9ff;
+        }
+
+        .chatbot-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-message.user {
+            align-items: flex-end;
+        }
+
+        .chatbot-message.bot {
+            align-items: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .user .message-bubble {
+            background-color: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot .message-bubble {
+            background-color: #e2e8f0;
+            color: var(--dark);
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: -5px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background-color: white;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+            outline-offset: 0;
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-input button {
+                width: 35px;
+                height: 35px;
+                margin-left: 8px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .chatbot-input button:hover, .chatbot-input button:focus-visible {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            outline: none;
+        }
+
+        .chatbot-input button i {
+            font-size: 1rem;
+        }
+
+        .typing-indicator {
+            display: flex;
+            padding: 10px 15px;
+            background-color: #e2e8f0;
+            border-radius: 18px;
+            margin-bottom: 5px;
+            align-items: center;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            background-color: #999;
+            border-radius: 50%;
+            display: inline-block;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .header-text h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .header-text p.subtitle {
+                margin: 0 auto 30px;
+            }
+
+            .header-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: auto;
+                order: -1;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .chatbot-popup {
+                width: 320px;
+                height: 440px;
+                bottom: 160px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+                transition: var(--transition);
+                box-shadow: none;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .memory {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 20px;
+            }
+
+            .memory::after {
+                left: 21px;
+            }
+
+            .left::after, .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .header-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about, .memories, #wishes {
+                padding: 40px;
+            }
+
+            .btn-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            header {
+                padding-top: 140px;
+            }
+
+            #gallery .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .magic-section {
+                padding: 40px;
+            }
+
+            .chatbot-popup {
+                width: 280px;
+                height: 380px;
+                right: 10px;
+                bottom: 160px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .header-text p.subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            #gallery .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .special-badge {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .about, .memories, #wishes {
+                padding: 30px 20px;
+            }
+
+            .about-image {
+                height: auto;
+            }
+
+            #wishes {
+                padding: 40px 25px;
+            }
+
+            .wishes-content {
+                font-size: 1rem;
+            }
+
+            .magic-section {
+                padding: 30px 20px;
+            }
+
+            .emoji-container {
+                font-size: 2.5rem;
+            }
+
+            .quote-container {
+                font-size: 1.2rem;
+            }
+
+            .chatbot-popup {
+                width: 250px;
+                height: 350px;
+                right: 10px;
+                bottom: 140px;
+            }
+
+            .chatbot-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 90px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div aria-hidden="true" class="scroll-progress"></div>
+    <div aria-hidden="true" class="particles" id="particles"></div>
+    <nav aria-label="Primary Navigation" id="nav" role="navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a aria-label="Homepage" class="logo" href="#">
+                    <img alt="Logo with purple and white abstract shapes forming a stylized letter K" draggable="false" src="https://i.ibb.co/0W2csC0/logo-removebg-preview.png" style="height: 90px"/>
+                </a>
+                <div class="nav-links" id="nav-links" role="menu">
+                    <a href="#home" role="menuitem" tabindex="0">Home</a>
+                    <a href="#about" role="menuitem" tabindex="0">About</a>
+                    <a href="#story" role="menuitem" tabindex="0">Story</a>
+                    <a href="#gallery" role="menuitem" tabindex="0">Moments</a>
+                    <a href="#gifts" role="menuitem" tabindex="0">Gifts</a>
+                    <a href="#memories" role="menuitem" tabindex="0">Memories</a>
+                    <a href="#wishes" role="menuitem" tabindex="0">My Wishes</a>
+                    <a href="#magic" role="menuitem" tabindex="0">Magic</a>
+                </div>
+                <button aria-controls="nav-links" aria-expanded="false" aria-label="Toggle menu" class="hamburger" id="hamburger-btn">
+                    <i aria-hidden="true" class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div aria-label="Open Krishna's chatbot" class="chatbot-icon" id="chatbot-icon" tabindex="0">
+        <i aria-hidden="true" class="fas fa-robot"></i>
+    </div>
+    <div aria-labelledby="chatbot-header" aria-modal="true" class="chatbot-popup" id="chatbot-popup" role="dialog" tabindex="-1">
+        <div class="chatbot-header" id="chatbot-header">
+            Krishna's Birthday Chatbot
+            <div aria-label="Close chatbot" class="chatbot-close" id="chatbot-close" role="button" tabindex="0">
+                <i aria-hidden="true" class="fas fa-times"></i>
+            </div>
+        </div>
+        <div aria-live="polite" aria-relevant="additions" class="chatbot-messages" id="chatbot-messages">
+            <div class="chatbot-message bot">
+                <div class="message-bubble">
+                    Hello! I'm Krishna's birthday chatbot. How can I help you today?
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input aria-label="Type your message" id="chatbot-input" placeholder="Type your message..." type="text"/>
+            <button aria-label="Send message" id="chatbot-send">
+                <i aria-hidden="true" class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <header aria-label="Hero section with birthday greeting" id="home" tabindex="-1">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 aria-atomic="true" aria-live="polite">Happy Birthday Krishna</h1>
+                    <p class="subtitle">Celebrating the extraordinary person you are with love and admiration</p>
+                    <div class="btn-group">
+                        <a class="btn" href="#about" role="button" tabindex="0">
+                            <i aria-hidden="true" class="fas fa-chevron-right"></i> Explore
+                        </a>
+                        <a class="btn btn-outline" href="#gifts" role="button" tabindex="0">
+                            <i aria-hidden="true" class="fas fa-gift"></i> Gift Ideas
+                        </a>
+                    </div>
+                    <div class="audio-container">
+                        <button class="play-btn btn" onclick="playAudio()" aria-label="Play birthday audio">
+                            <i class="fas fa-play" aria-hidden="true"></i> Play Birthday Song
+                        </button>
+                        <div id="audioPlayerContainer" style="margin-top: 20px;">
+                            <iframe title="Krishna" allowtransparency="true" height="150" width="100%" style="border: none; min-width: min(100%, 430px);height:150px;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=2ne6w-19175dd-pb&from=pb6admin&share=0&download=0&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&btn-skin=7" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div aria-label="Image of Krishna smiling warmly, wearing a festive outfit with soft glowing lights in the background" class="header-image" tabindex="0">
+                    <img alt="Krishna smiling warmly, wearing a festive outfit with soft glowing lights in the background" draggable="false" src="https://i.ibb.co/FLCZ0G8Q/final-3.png"/>
+                    <div aria-label="Badge: Exceptional" class="special-badge badge-1" tabindex="0">
+                        <i aria-hidden="true" class="fas fa-star"></i> <span>Exceptional</span>
+                    </div>
+                    <div aria-label="Badge: Brilliant" class="special-badge badge-2" tabindex="0">
+                        <i aria-hidden="true" class="fas fa-lightbulb"></i> <span>Brilliant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section aria-labelledby="about-title" id="about" tabindex="-1">
+        <div class="container about">
+            <div class="section-header">
+                <h2 class="section-title" id="about-title">About Krishna</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who is Krishna?</h3>
+                    <p>Krishna is a radiant soul whose warmth and curiosity light up every room. With a passion for learning and a heart full of kindness, she inspires those around her to embrace life’s beauty and challenges with grace.</p>
+                    <p>Her journey is marked by resilience, creativity, and a deep connection to family and faith. Whether capturing moments through her camera lens or leading with quiet strength, Krishna embodies the spirit of adventure and love.</p>
+                    <ul class="family-details" aria-label="Family details of Krishna">
+                        <li><strong>Father:</strong> Shankaraiah</li>
+                        <li><strong>Mother:</strong> Kanthamma</li>
+                        <li><strong>Brothers:</strong> Venkatesh and Jagadeesh</li>
+                    </ul>
+                    <div class="about-features">
+                        <div class="feature-item" tabindex="0">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Electronics Engineer</h4>
+                                <p>Graduated from Guru Nanak Institutions Technical Campus, Hyderabad.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item" tabindex="0">
+                            <div class="feature-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Passionate Photographer</h4>
+                                <p>Capturing the world’s beauty through her artistic lens.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item" tabindex="0">
+                            <div class="feature-icon">
+                                <i class="fas fa-praying-hands"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Faithful and Grounded</h4>
+                                <p>Known as Mary in her church community, symbolizing peace and devotion.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item" tabindex="0">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Family First</h4>
+                                <p>Supported and loved by her parents and two brothers, her greatest strength.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div aria-label="Photo of Krishna smiling warmly with natural background" class="about-image" tabindex="0">
+                    <img alt="Krishna" draggable="false" src="https://i.ibb.co/yB49L6jr/unblurimageai-krishna4.jpg"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section aria-labelledby="story-title" id="story" tabindex="-1">
+        <div class="container about">
+            <div class="section-header">
+                <h2 class="section-title" id="story-title">Once Upon a Time in Kadambapur</h2>
+            </div>
+            <div class="about-content">
+                <div aria-label="Scenic view of a peaceful village with lush greenery and traditional houses in Telangana" class="about-image" tabindex="0">
+                    <img alt="Scenic view of a peaceful village with lush greenery and traditional houses in Telangana" draggable="false" height="800" src="https://storage.googleapis.com/a1aa/image/c2dd0874-336d-4709-9bf8-0e648b3e3127.jpg" width="600"/>
+                </div>
+                <div class="about-text">
+                    <p>In the tranquil village of Kadambapur, nestled in the heart of Telangana, a bright star was born on August 4, 1997. Kommu Krishnaveni, affectionately known as Krishna, arrived with a gentle spirit and an insatiable curiosity that would shape her life's journey.</p>
+                    <p>From her earliest days, Krishna stood apart — a seeker of knowledge and wonder. Surrounded by the loving guidance of her parents and the protective care of her two elder brothers, she blossomed into a natural leader, fueled by a thirst for learning and discovery.</p>
+                    <ul class="family-details" aria-label="Family details of Krishna in story section">
+                        <li><strong>Father:</strong> Shankaraiah</li>
+                        <li><strong>Mother:</strong> Kanthamma</li>
+                        <li><strong>Brothers:</strong> Venkatesh and Jagadeesh</li>
+                    </ul>
+                    <p>Her academic path led her to earn a Bachelor’s degree in Electronics and Communication Engineering from Guru Nanak Institutions Technical Campus in Hyderabad. Yet, her college years were more than just studies; they were a time of self-discovery, resilience, and growth.</p>
+                    <p>Beyond academics, Krishna’s adventurous heart found joy in exploring the world through her camera lens, capturing fleeting moments and turning them into timeless memories. Known as Kitty among friends, her artistic soul shines brightly in every frame.</p>
+                    <p>Rooted deeply in her faith, Krishna is also known as Mary within her church community — a symbol of her inner peace and spiritual devotion. This beautiful balance of free spirit and steadfast values defines the essence of who she is.</p>
+                    <p>At the core of her story is family — the unwavering support of her father’s wisdom, her mother’s boundless love, and the camaraderie of her brothers. Together, they have been her strength and inspiration.</p>
+                    <p>Today, as we celebrate Krishna, we honor her laughter, her quiet strength, and the dreams that light her path. This is just the beginning of an incredible journey filled with endless possibilities.</p>
+                    <p><strong>Happy Birthday, Krishna!</strong></p>
+                    <p><em>With love from all who cherish you — the best chapters are yet to come.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section aria-labelledby="gallery-title" id="gallery" tabindex="-1">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="gallery-title">Beautiful Moments of Krishna</h2>
+            </div>
+            <div aria-label="Moments of Krishna" class="gallery-container" role="list">
+                <div aria-label="Radiant Smile in the Garden" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna smiling in a sunlit garden with soft pastel colors" draggable="false" src="https://i.ibb.co/4Zjy8dhy/1.jpg"/>
+                </div>
+                <div aria-label="Warmth of Home" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Cozy home interior with warm lighting and elegant decor" draggable="false" src="https://i.ibb.co/7NyypWPp/home.jpg"/>
+                </div>
+                <div aria-label="Strolling Through Blossoms" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna walking through a blooming flower field with sunlight" draggable="false" src="https://i.ibb.co/j98P4YdW/5.jpg"/>
+                </div>
+                <div aria-label="Quiet Reflection" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna sitting by a window with soft natural light and thoughtful expression" draggable="false" src="https://i.ibb.co/8ggDdG9x/6.jpg"/>
+                </div>
+                <div aria-label="Joyful Laughter Under Blue Skies" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna laughing joyfully outdoors with a bright blue sky" draggable="false" src="https://i.ibb.co/XZKCyQrb/9.jpg"/>
+                </div>
+                <div aria-label="Serene Garden Moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna enjoying a peaceful moment in a garden with soft sunlight" draggable="false" src="https://i.ibb.co/215c3WNP/10.jpg"/>
+                </div>
+                <div aria-label="Elegant in Floral Grace" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna posing elegantly in a floral dress with warm tones" draggable="false" src="https://i.ibb.co/NnYSCZ1n/7.jpg"/>
+                </div>
+                <div aria-label="Gentle Smile Amidst Nature" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna smiling softly with a blurred natural background" draggable="false" src="https://i.ibb.co/nM1PyQB9/11.jpg"/>
+                </div>
+                <div aria-label="Krishna in a joyful moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna in a joyful moment" draggable="false" src="https://i.ibb.co/FL4LV5YM/IMG-20250727-WA0004.jpg"/>
+                </div>
+                <div aria-label="Krishna in a serene moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna in a serene moment" draggable="false" src="https://i.ibb.co/1GFBZjxC/IMG-20250727-WA0005.jpg"/>
+                </div>
+                <div aria-label="Krishna in a peaceful moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna in a peaceful moment" draggable="false" src="https://i.ibb.co/27H9Rn5M/IMG-20250727-WA0002.jpg"/>
+                </div>
+                <div aria-label="Krishna in a happy moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna in a happy moment" draggable="false" src="https://i.ibb.co/fVgVf13d/IMG-20250727-WA0006.jpg"/>
+                </div>
+                <div aria-label="Krishna in a delightful moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna in a delightful moment" draggable="false" src="https://i.ibb.co/gFWyQnzx/IMG-20250727-WA0007.jpg"/>
+                </div>
+                <div aria-label="Krishna in a wonderful moment" class="gallery-item" role="listitem" tabindex="0">
+                    <img alt="Krishna in a wonderful moment" draggable="false" src="https://i.ibb.co/6Q9f2pF/IMG-20250727-WA0008.jpg"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section aria-describedby="gifts-desc" aria-labelledby="gifts-title" id="gifts" tabindex="-1">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="gifts-title">Thoughtful Gifts</h2>
+                <p class="section-subtitle" id="gifts-desc" style="color:#555555; font-weight: 500;">For someone who deserves the very best</p>
+            </div>
+            <div aria-label="Gift ideas for Krishna" class="gifts-container" role="list">
+                <div aria-label="Educational Book: A book that inspires learning and growth, perfect for someone who loves to read and expand their knowledge. Price range ₹1500-₹3700" class="gift-card" role="listitem" tabindex="0">
+                    <div aria-hidden="true" class="gift-image">
+                        <img alt="Educational book cover with open pages and glasses on a wooden table" draggable="false" height="400" src="https://storage.googleapis.com/a1aa/image/0e12fa95-a6aa-4e0f-c41a-83a29a45f220.jpg" width="600"/>
+                        <div class="gift-badge">Educational</div>
+                    </div>
+                    <div class="gift-info">
+                        <h3>Educational Book</h3>
+                        <p>A book that inspires learning and growth, perfect for someone who loves to read and expand their knowledge.</p>
+                        <div class="gift-meta">
+                            <div class="gift-price">₹1500-₹3700</div>
+                            <a aria-label="Add Educational Book to cart" class="btn" href="#" style="padding: 8px 15px; font-size: 0.8rem">
+                                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div aria-label="Teddy Bear: A soft and cuddly teddy bear, perfect for comfort and companionship. Price range ₹1100-₹3000" class="gift-card" role="listitem" tabindex="0">
+                    <div aria-hidden="true" class="gift-image">
+                        <img alt="Soft teddy bear sitting on a cozy blanket with warm lighting" draggable="false" height="400" src="https://storage.googleapis.com/a1aa/image/609f0737-4fc3-4fe1-0199-efa86daf50ab.jpg" width="600"/>
+                        <div class="gift-badge">Cuddly</div>
+                    </div>
+                    <div class="gift-info">
+                        <h3>Teddy Bear</h3>
+                        <p>A soft and cuddly teddy bear, perfect for comfort and companionship.</p>
+                        <div class="gift-meta">
+                            <div class="gift-price">₹1100-₹3000</div>
+                            <a aria-label="Add Teddy Bear to cart" class="btn" href="#" style="padding: 8px 15px; font-size: 0.8rem">
+                                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div aria-label="Chocolate Box: A delightful box of assorted chocolates, perfect for satisfying a sweet tooth. Price range ₹750-₹2200" class="gift-card" role="listitem" tabindex="0">
+                    <div aria-hidden="true" class="gift-image">
+                        <img alt="Assorted chocolate box with ribbon and decorative packaging on a wooden surface" draggable="false" height="400" src="https://storage.googleapis.com/a1aa/image/913bab57-d532-41b4-be32-95082d9de529.jpg" width="600"/>
+                        <div class="gift-badge">Sweet</div>
+                    </div>
+                    <div class="gift-info">
+                        <h3>Chocolate Box</h3>
+                        <p>A delightful box of assorted chocolates, perfect for satisfying a sweet tooth.</p>
+                        <div class="gift-meta">
+                            <div class="gift-price">₹750-₹2200</div>
+                            <a aria-label="Add Chocolate Box to cart" class="btn" href="#" style="padding: 8px 15px; font-size: 0.8rem">
+                                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section aria-describedby="memories-desc" aria-labelledby="memories-title" id="memories" tabindex="-1">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="memories-title">Our Journey</h2>
+                <p class="section-subtitle" id="memories-desc" style="color:#555555; font-weight: 500;">Key moments in life's path</p>
+            </div>
+            <div aria-label="Timeline of memories" class="memories" role="region">
+                <div class="timeline">
+                    <div aria-label="Memory: The Beginning - First Meeting" class="memory left" tabindex="0">
+                        <div class="memory-content">
+                            <div class="memory-date">
+                                <i aria-hidden="true" class="fas fa-calendar-alt"></i>
+                                <span>First Meeting</span>
+                            </div>
+                            <h3>The Beginning</h3>
+                            <p>The day paths crossed and everything changed. Drawn to the energy and unique perspective on life.</p>
+                        </div>
+                    </div>
+                    <div aria-label="Memory: Discovering New Horizons - First Adventure" class="memory right" tabindex="0">
+                        <div class="memory-content">
+                            <div class="memory-date">
+                                <i aria-hidden="true" class="fas fa-calendar-alt"></i>
+                                <span>First Adventure</span>
+                            </div>
+                            <h3>Discovering New Horizons</h3>
+                            <p>The first trip that revealed how well different spirits can complement each other, filled with wonder.</p>
+                        </div>
+                    </div>
+                    <div aria-label="Memory: Deepening Understanding - Important Milestone" class="memory left" tabindex="0">
+                        <div class="memory-content">
+                            <div class="memory-date">
+                                <i aria-hidden="true" class="fas fa-calendar-alt"></i>
+                                <span>Important Milestone</span>
+                            </div>
+                            <h3>Deepening Understanding</h3>
+                            <p>Realizing something truly special. Support and understanding that showed the meaning of real connection.</p>
+                        </div>
+                    </div>
+                    <div aria-label="Memory: Overcoming Challenges - Shared Achievement" class="memory right" tabindex="0">
+                        <div class="memory-content">
+                            <div class="memory-date">
+                                <i aria-hidden="true" class="fas fa-calendar-alt"></i>
+                                <span>Shared Achievement</span>
+                            </div>
+                            <h3>Overcoming Challenges</h3>
+                            <p>Facing and overcoming challenges that build strength. Resilience and optimism as guiding lights.</p>
+                        </div>
+                    </div>
+                    <div aria-label="Memory: Celebrating Life - Special Day" class="memory left" tabindex="0">
+                        <div class="memory-content">
+                            <div class="memory-date">
+                                <i aria-hidden="true" class="fas fa-calendar-alt"></i>
+                                <span>Special Day</span>
+                            </div>
+                            <h3>Celebrating Life</h3>
+                            <p>Honoring the incredible person and the beautiful moments that shape the journey. Here's to many more.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section aria-describedby="wishes-desc" aria-labelledby="wishes-title" id="wishes" tabindex="-1">
+        <div aria-label="Birthday wishes" class="container mx-auto bg-white rounded-3xl p-16 max-w-3xl" id="wishes" role="region">
+            <h2 class="section-title" id="wishes-title">My Wishes</h2>
+            <div class="wishes-content" id="wishes-desc">
+                <p>Dear Krishna,</p>
+                <p>On this special day, I want to express how much you inspire and touch the lives of those around you. Your kindness, intelligence, and strength are qualities that shine brightly and leave a lasting impact.</p>
+                <p>May this year bring you endless happiness, new opportunities, and the fulfillment of your dreams. May you find peace in your heart and joy in every step you take.</p>
+                <p>Thank you for being a remarkable person who makes the world a better place just by being in it. Wishing you a wonderful birthday filled with love, laughter, and beautiful moments.</p>
+                <p>With warmest wishes,</p>
+                <p><strong>Pandu</strong></p>
+            </div>
+        </div>
+    </section>
+    <section aria-describedby="magic-desc" aria-labelledby="magic-title" id="magic" tabindex="-1">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="magic-title">Magic Moment</h2>
+                <p class="section-subtitle" id="magic-desc" style="color:#555555; font-weight: 500;">Click the emoji to reveal a special birthday surprise!</p>
+            </div>
+            <div class="magic-section" role="region">
+                <div class="magic-content">
+                    <div aria-label="Click to cycle through birthday emojis" class="emoji-container" id="emoji-display" role="button" tabindex="0">🎉</div>
+                    <div class="quote-container" id="quote-display">
+                        <span class="quote-decoration cake-left">🎂</span>
+                        <span class="quote-decoration cake-right">🎂</span>
+                        <span class="quote-decoration balloon-left">🎈</span>
+                        <span class="quote-decoration balloon-right">🎈</span>
+                        <p>"May your birthday be the start of a wonderful new chapter filled with joy and adventure!"</p>
+                        <p style="font-style: italic; font-weight: 600; text-align: right; margin-top: 20px;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer aria-label="Footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Happy Birthday Krishna</h3>
+                    <p>To the most special person I know. May your year ahead be as wonderful and unique as you are.</p>
+                    <div aria-label="Social media links" class="social-links" role="list">
+                        <a aria-label="Instagram" href="#" role="listitem">
+                            <i aria-hidden="true" class="fab fa-instagram"></i>
+                        </a>
+                        <a aria-label="Twitter" href="#" role="listitem">
+                            <i aria-hidden="true" class="fab fa-twitter"></i>
+                        </a>
+                        <a aria-label="Facebook" href="#" role="listitem">
+                            <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                        </a>
+                        <a aria-label="Pinterest" href="#" role="listitem">
+                            <i aria-hidden="true" class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul aria-label="Quick navigation links" class="footer-links" role="list">
+                        <li>
+                            <a href="#home">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#gallery">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> Moments
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#gifts">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> Gifts
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul aria-label="Contact links" class="footer-links" role="list">
+                        <li>
+                            <a href="#">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> Plan Something
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> Birthday Wishes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i aria-hidden="true" class="fas fa-chevron-right"></i> Send a Message
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Happy Birthday Krishna!</p>
+            </div>
+        </div>
+    </footer>
+    <button aria-label="Celebrate with confetti" class="floating-btn" id="confetti-btn" title="Celebrate with confetti">
+        <i aria-hidden="true" class="fas fa-birthday-cake"></i>
+    </button>
+    <div aria-label="Music player controls" class="music-player" role="region" tabindex="0">
+        <i aria-label="Play birthday audio" class="fas fa-play" id="play-btn" role="button" tabindex="0"></i>
+        <i aria-label="Pause birthday audio" class="fas fa-pause" id="pause-btn" role="button" style="display: none" tabindex="0"></i>
+    </div>
+    <div aria-labelledby="modal-image-label" aria-modal="true" class="modal" id="image-modal" role="dialog" tabindex="-1">
+        <div class="modal-content">
+            <button aria-label="Close image modal" class="close-modal" title="Close image modal">×</button>
+            <img alt="Enlarged view" aria-describedby="modal-image-desc" draggable="false" id="modal-image" src=""/>
+            <p class="sr-only" id="modal-image-desc">Enlarged image view</p>
+        </div>
+    </div>
+    <script>
+        // Navigation scroll effect
+        window.addEventListener("scroll", function () {
+            const nav = document.getElementById("nav");
+            if (window.scrollY > 50) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById("hamburger-btn");
+        const navLinks = document.getElementById("nav-links");
+        hamburger.addEventListener("click", function () {
+            const expanded = this.getAttribute("aria-expanded") === "true" || false;
+            this.setAttribute("aria-expanded", !expanded);
+            navLinks.classList.toggle("active");
+            hamburger.innerHTML = navLinks.classList.contains("active") ? '<i class="fas fa-times" aria-hidden="true"></i>' : '<i class="fas fa-bars" aria-hidden="true"></i>';
+        });
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", false);
+                hamburger.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href");
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: "smooth",
+                    });
+                    targetElement.focus({ preventScroll: true });
+                }
+            });
+        });
+
+        // Scroll progress indicator
+        window.addEventListener("scroll", function () {
+            const scrollProgress = document.querySelector(".scroll-progress");
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + "%";
+        });
+
+        // Timeline animation on scroll
+        const memories = document.querySelectorAll(".memory");
+        function checkScroll() {
+            memories.forEach((memory) => {
+                const memoryTop = memory.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (memoryTop < windowHeight - 100) {
+                    memory.classList.add("visible");
+                }
+            });
+        }
+        checkScroll();
+        window.addEventListener("scroll", checkScroll);
+
+        // Confetti effect
+        const confettiBtn = document.getElementById("confetti-btn");
+        confettiBtn.addEventListener("click", function () {
+            createConfetti();
+        });
+
+        function createConfetti() {
+            const colors = ["#6C63FF", "#FF6584", "#61D9FF", "#FF7E5F", "#4A6FA5"];
+            const confettiContainer = document.createElement("div");
+            confettiContainer.style.position = "fixed";
+            confettiContainer.style.top = "0";
+            confettiContainer.style.left = "0";
+            confettiContainer.style.width = "100%";
+            confettiContainer.style.height = "100%";
+            confettiContainer.style.pointerEvents = "none";
+            confettiContainer.style.zIndex = "1000";
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement("div");
+                    const size = Math.random() * 15 + 5;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const left = Math.random() * 100;
+                    const animationDuration = Math.random() * 3 + 2;
+                    const shape = Math.random();
+
+                    confetti.style.position = "absolute";
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.background = color;
+                    confetti.style.left = `${left}%`;
+                    confetti.style.top = "-10px";
+                    confetti.style.opacity = Math.random() * 0.7 + 0.3;
+
+                    if (shape < 0.3) {
+                        confetti.style.borderRadius = "50%";
+                    } else if (shape < 0.6) {
+                        confetti.style.clipPath = "polygon(50% 0%, 0% 100%, 100% 100%)";
+                        confetti.style.width = `${size}px`;
+                        confetti.style.height = `${size}px`;
+                        confetti.style.background = "transparent";
+                        confetti.style.borderLeft = `${size / 2}px solid transparent`;
+                        confetti.style.borderRight = `${size / 2}px solid transparent`;
+                        confetti.style.borderBottom = `${size}px solid ${color}`;
+                    } else {
+                        confetti.style.borderRadius = "0";
+                    }
+
+                    confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+
+                    const keyframes = `
+                        @keyframes fall {
+                            to {
+                                transform: translateY(100vh) translateX(${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg);
+                                opacity: 0;
+                            }
+                        }
+                    `;
+
+                    if (!document.getElementById("confetti-fall")) {
+                        const style = document.createElement("style");
+                        style.id = "confetti-fall";
+                        style.innerHTML = keyframes;
+                        document.head.appendChild(style);
+                    }
+
+                    confettiContainer.appendChild(confetti);
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, animationDuration * 1000);
+                }, i * 20);
+            }
+
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 5000);
+        }
+
+        // Image gallery modal
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const modal = document.getElementById("image-modal");
+        const modalImg = document.getElementById("modal-image");
+        const closeModal = document.querySelector(".close-modal");
+
+        galleryItems.forEach((item) => {
+            item.addEventListener("click", function () {
+                const imgSrc = this.querySelector("img").src;
+                const altText = this.querySelector("img").alt;
+                modalImg.src = imgSrc;
+                modalImg.alt = altText;
+                modal.classList.add("show");
+                modal.focus();
+                document.body.style.overflow = "hidden";
+            });
+
+            item.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        closeModal.addEventListener("click", function () {
+            modal.classList.remove("show");
+            document.body.style.overflow = "auto";
+        });
+
+        closeModal.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                this.click();
+            }
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("show");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        window.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && modal.classList.contains("show")) {
+                modal.classList.remove("show");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Typewriter effect for header title
+        const headerTitle = document.querySelector(".header-text h1");
+        const originalText = headerTitle.textContent;
+        headerTitle.textContent = "";
+        let i = 0;
+
+        function typeWriter() {
+            if (i < originalText.length) {
+                headerTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        setTimeout(typeWriter, 500);
+
+        // Music player functionality
+        const playBtn = document.getElementById("play-btn");
+        const pauseBtn = document.getElementById("pause-btn");
+
+        playBtn.addEventListener("click", function () {
+            const audioPlayer = document.getElementById("audioPlayer");
+            if (audioPlayer) {
+                audioPlayer.play();
+                playBtn.style.display = "none";
+                pauseBtn.style.display = "inline";
+            }
+        });
+
+        pauseBtn.addEventListener("click", function () {
+            const audioPlayer = document.getElementById("audioPlayer");
+            if (audioPlayer) {
+                audioPlayer.pause();
+                pauseBtn.style.display = "none";
+                playBtn.style.display = "inline";
+            }
+        });
+
+        // Magic Section Emoji Animation
+        const emojiDisplay = document.getElementById("emoji-display");
+        const quoteDisplay = document.getElementById("quote-display");
+        const emojis = ["🎉", "🎂", "🎈", "🎁", "🥳", "🎊", "🍰", "🧁", "🎀", "🎶", "🌟", "🍾", "🎇"];
+        let emojiIndex = 0;
+
+        emojiDisplay.addEventListener("click", function () {
+            emojiIndex++;
+            if (emojiIndex < emojis.length) {
+                emojiDisplay.textContent = emojis[emojiIndex];
+                emojiDisplay.style.animation = "bounce 0.3s ease";
+                setTimeout(() => {
+                    emojiDisplay.style.animation = "";
+                }, 300);
+            } else {
+                emojiDisplay.style.display = "none";
+                quoteDisplay.classList.add("show");
+            }
+        });
+
+        emojiDisplay.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                this.click();
+            }
+        });
+
+        // Floating animation for particles and decorations
+        const style = document.createElement("style");
+        style.innerHTML = `
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0); }
+                25% { transform: translate(10px, 10px); }
+                50% { transform: translate(-5px, 15px); }
+                75% { transform: translate(5px, -5px); }
+            }
+            @keyframes bounce {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.5); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById("particles");
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement("div");
+                particle.classList.add("particle");
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const opacity = Math.random() * 0.5 + 0.1;
+                const animationDuration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.opacity = opacity;
+                particle.style.animation = `float ${animationDuration}s ease-in-out infinite ${delay}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Chatbot functionality
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        const chatbotPopup = document.getElementById('chatbot-popup');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotSend = document.getElementById('chatbot-send');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+
+        chatbotIcon.addEventListener('click', function() {
+            chatbotPopup.classList.add('show');
+            chatbotPopup.focus();
+        });
+
+        chatbotIcon.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                chatbotPopup.classList.add('show');
+                chatbotPopup.focus();
+            }
+        });
+
+        chatbotClose.addEventListener('click', function() {
+            chatbotPopup.classList.remove('show');
+            chatbotIcon.focus();
+        });
+
+        chatbotClose.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                chatbotPopup.classList.remove('show');
+                chatbotIcon.focus();
+            }
+        });
+
+        chatbotSend.addEventListener('click', sendMessage);
+
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function addMessage(content, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chatbot-message');
+            messageDiv.classList.add(isUser ? 'user' : 'bot');
+
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.classList.add('message-bubble');
+            bubbleDiv.innerHTML = formatMessage(content);
+
+            const timeDiv = document.createElement('div');
+            timeDiv.classList.add('message-time');
+            timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            messageDiv.appendChild(bubbleDiv);
+            messageDiv.appendChild(timeDiv);
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function formatMessage(content) {
+            content = content.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+            content = content.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+            content = content.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+            content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            content = content.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+            content = content.replace(/^\* (.*$)/gm, '<li>$1</li>');
+            content = content.replace(/<li>.*<\/li>/gms, (match) => `<ul>${match}</ul>`);
+            content = content.replace(/^\d+\. (.*$)/gm, '<li>$1</li>');
+            content = content.replace(/<li>.*<\/li>/gms, (match) => `<ol>${match}</ol>`);
+            return content;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('chatbot-message', 'bot', 'typing-indicator');
+            typingDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            return typingDiv;
+        }
+
+        function removeTypingIndicator(typingDiv) {
+            if (typingDiv) {
+                chatbotMessages.removeChild(typingDiv);
+            }
+        }
+
+        async function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message === '') return;
+
+            addMessage(message, true);
+            chatbotInput.value = '';
+
+            const typingDiv = showTypingIndicator();
+
+            try {
+                const response = await fetch('https://api.sambanova.ai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer eeb40e00-39ca-4d2a-b156-a281129ffefd'
+                    },
+                    body: JSON.stringify({
+                        model: "Meta-Llama-3.1-8B-Instruct",
+                        messages: [
+                            {
+                                role: "system",
+                                content: "You are Krishna's birthday chatbot. Keep your responses short, friendly and related to birthday celebrations. Krishna is a dear friend, not the deity."
+                            },
+                            {
+                                role: "user",
+                                content: message
+                            }
+                        ],
+                        max_tokens: 150,
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                removeTypingIndicator(typingDiv);
+
+                if (data.choices && data.choices.length > 0 && data.choices[0].message) {
+                    addMessage(data.choices[0].message.content, false);
+                } else {
+                    addMessage("Sorry, I didn't understand that. Could you rephrase your question?", false);
+                }
+            } catch (error) {
+                removeTypingIndicator(typingDiv);
+                addMessage("Sorry, I'm having trouble connecting to the server. Please try again later.", false);
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
